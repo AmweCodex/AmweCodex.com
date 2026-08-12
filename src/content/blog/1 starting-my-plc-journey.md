@@ -3,7 +3,7 @@ title: "Starting My PLC Journey"
 summary: "Why I'm moving from microcontrollers into industrial PLCs, and what I'm hoping to learn along the way."
 cover: "/images/blog/starting-my-plc-journey.svg"
 tags: ["PLC", "Career", "Automation"]
-date: 2026-01-12
+date: 2026-08-13
 ---
 
 After building a handful of microcontroller projects — an irrigation
