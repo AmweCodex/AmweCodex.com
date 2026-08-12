@@ -1,0 +1,41 @@
+---
+/*
+  src/pages/blog/index.astro  →  the page at /blog
+------------------------------------------------------------------------- */
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title="Blog — Musawandile Shamase" description="Notes from Musawandile Shamase's PLC learning journey.">
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow"><span class="led-dot"></span>Blog</p>
+      <h1>PLC learning journey</h1>
+      <p class="page-intro">
+        Notes and write-ups as I work through PLC programming — ladder
+        logic, scan cycles, timers, and everything else along the way.
+      </p>
+
+      <div class="blog-grid">
+        {posts.map((entry) => <BlogCard entry={entry} />)}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-intro {
+    max-width: 60ch;
+    margin-bottom: var(--space-lg);
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+  }
+</style>

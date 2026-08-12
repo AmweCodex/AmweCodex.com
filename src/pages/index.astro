@@ -2,28 +2,26 @@
 /*
   index.astro
   ------------------------------------------------------------------------
-  The homepage. This file's job is just ASSEMBLY — importing each section
-  component and placing them in order, wrapped in the shared Layout. The
-  actual content/markup for each section lives in its own component file
-  in src/components/, which keeps this file short and easy to scan.
-
-  LadderRung is dropped in between sections as the recurring "signature"
-  divider described in each component's comments.
+  The homepage. Assembles sections in order, wrapped in the shared Layout.
+  Skills moved out to /about (see about.astro) — this page now shows a
+  preview of the 3 latest projects and 3 latest blog posts instead, each
+  linking through to their full listing page.
 ------------------------------------------------------------------------- */
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import Skills from '../components/Skills.astro';
-import Projects from '../components/Projects.astro';
+import ProjectsPreview from '../components/ProjectsPreview.astro';
+import BlogPreview from '../components/BlogPreview.astro';
 import Experience from '../components/Experience.astro';
 import Certifications from '../components/Certifications.astro';
 import LadderRung from '../components/LadderRung.astro';
 ---
 
-<Layout title="Musawandile Shamase">
+<Layout title="Musawandile Shamase — Electronics & Computer Engineering">
   <Hero />
-  <LadderRung label="SKILLS" />
-  <Skills />
-  <Projects />
+  <LadderRung label="PROJECTS" />
+  <ProjectsPreview />
+  <LadderRung label="BLOG" />
+  <BlogPreview />
   <LadderRung label="EXPERIENCE" />
   <Experience />
   <Certifications />

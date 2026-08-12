@@ -1,0 +1,45 @@
+---
+/*
+  src/pages/projects/index.astro  →  the page at /projects
+  ------------------------------------------------------------------------
+  Lists EVERY project (not just the homepage's latest 3). Astro turns any
+  file at src/pages/projects/index.astro into the route /projects
+  automatically — that's Astro's file-based routing.
+------------------------------------------------------------------------- */
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const allProjects = await getCollection('projects', ({ data }) => !data.draft);
+const projects = allProjects.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title="Projects — Musawandile Shamase" description="Engineering projects by Musawandile Shamase.">
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow"><span class="led-dot"></span>Projects</p>
+      <h1>All engineering projects</h1>
+      <p class="page-intro">
+        Prototypes and builds spanning embedded systems, sensors and
+        control logic. Click into any project for the full write-up.
+      </p>
+
+      <div class="projects-grid">
+        {projects.map((entry) => <ProjectCard entry={entry} />)}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-intro {
+    max-width: 60ch;
+    margin-bottom: var(--space-lg);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+  }
+</style>

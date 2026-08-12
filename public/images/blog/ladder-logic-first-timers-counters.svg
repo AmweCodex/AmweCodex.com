@@ -1,0 +1,30 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#141d2b" />
+      <stop offset="100%" stop-color="#1a2331" />
+    </linearGradient>
+    <radialGradient id="glow5" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#07e9b4" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#07e9b4" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bgGrad5)" />
+  <rect width="800" height="450" fill="url(#glow5)" />
+  <line x1="760" y1="160" x2="800" y2="160" stroke="#4a5466" stroke-width="2" opacity="0.34" />
+<line x1="640" y1="0" x2="783" y2="0" stroke="#4a5466" stroke-width="2" opacity="0.27" />
+<line x1="200" y1="40" x2="200" y2="183" stroke="#4a5466" stroke-width="2" opacity="0.21" />
+<line x1="120" y1="360" x2="120" y2="450" stroke="#4a5466" stroke-width="2" opacity="0.21" />
+<line x1="200" y1="240" x2="200" y2="338" stroke="#4a5466" stroke-width="2" opacity="0.15" />
+<line x1="760" y1="280" x2="760" y2="360" stroke="#4a5466" stroke-width="2" opacity="0.34" />
+<line x1="0" y1="120" x2="122" y2="120" stroke="#4a5466" stroke-width="2" opacity="0.32" />
+<line x1="360" y1="200" x2="578" y2="200" stroke="#4a5466" stroke-width="2" opacity="0.32" />
+<line x1="240" y1="80" x2="496" y2="80" stroke="#4a5466" stroke-width="2" opacity="0.17" />
+  <circle cx="480" cy="160" r="3" fill="#07e9b4" opacity="0.68" />
+<circle cx="200" cy="80" r="4" fill="#07e9b4" opacity="0.53" />
+<circle cx="360" cy="360" r="5" fill="#07e9b4" opacity="0.5" />
+<circle cx="400" cy="40" r="4" fill="#07e9b4" opacity="0.68" />
+<circle cx="360" cy="280" r="5" fill="#07e9b4" opacity="0.66" />
+<circle cx="600" cy="280" r="5" fill="#07e9b4" opacity="0.59" />
+  <text x="400.0" y="233.0" text-anchor="middle" font-family="monospace" font-size="22" fill="#cad2e2" opacity="0.55" letter-spacing="2">RUNG 002</text>
+</svg>

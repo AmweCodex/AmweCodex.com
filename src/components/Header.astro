@@ -14,23 +14,40 @@
   served from the site root, so "/Musawandile-Shamase-Resume.pdf" works
   in both local dev and once deployed.
 ------------------------------------------------------------------------- */
+/*
+  Real pages now (not just in-page anchors) — clicking "Blog" navigates to
+  the /blog route and opens the blog listing, same for Projects/About.
+  "Contact" stays an anchor since the contact section lives in the
+  Footer, which renders on every page — #contact works from anywhere.
+*/
 const navLinks = [
-  { href: '#projects', label: 'Projects' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/', label: 'Home' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/about', label: 'About' },
+  { href: '/#contact', label: 'Contact' },
 ];
+
+// Highlights the current page's nav link. Astro.url.pathname is something
+// like "/projects" or "/blog/scan-cycles-explained" — startsWith lets a
+// project/post detail page still highlight the "Projects"/"Blog" tab.
+const currentPath = Astro.url.pathname;
+function isActive(href: string) {
+  if (href === '/') return currentPath === '/';
+  const base = href.split('#')[0];
+  return base !== '' && currentPath.startsWith(base);
+}
 ---
 
 <header class="site-header">
   <div class="container header-inner">
-    <a href="#top" class="logo">
+    <a href="/" class="logo">
       <span class="logo-bracket">&lt;</span>Amwe<span class="logo-accent">Codex</span><span class="logo-bracket">/&gt;</span>
     </a>
 
     <nav class="nav-links" aria-label="Section navigation">
       {navLinks.map((link) => (
-        <a href={link.href}>{link.label}</a>
+        <a href={link.href} aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</a>
       ))}
     </nav>
 
@@ -88,6 +105,21 @@ const navLinks = [
   }
   .nav-links a:hover {
     color: var(--teal);
+  }
+  /* Current page's nav link stays teal, with a small underline, so it's
+     obvious at a glance which section you're in. */
+  .nav-links a[aria-current='page'] {
+    color: var(--teal);
+    position: relative;
+  }
+  .nav-links a[aria-current='page']::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    background: var(--teal);
   }
 
   /* Below 800px: hide the middle nav links to avoid crowding. The page
