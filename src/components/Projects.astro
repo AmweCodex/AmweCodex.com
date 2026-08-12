@@ -1,0 +1,101 @@
+---
+/*
+  Projects.astro
+  ------------------------------------------------------------------------
+  Same pattern as Skills.astro — an array of data at the top, mapped to
+  cards below. Each project has a short "stack" line (the tools/parts
+  used) and two bullet points describing what was built.
+
+  When you finish new projects, add another object to this array — the
+  grid and cards adapt automatically (see .projects-grid in <style>,
+  which wraps as many cards per row as fit).
+------------------------------------------------------------------------- */
+const projects = [
+  {
+    title: 'Smart Home Irrigation System',
+    stack: 'Arduino · C++ · Soil Sensors · Relay Modules',
+    points: [
+      'Designed and prototyped an automated irrigation controller that reads soil moisture in real time to trigger the water pump.',
+      'Programmed the microcontroller in C++ to optimise watering intervals, cutting water waste and improving efficiency.',
+    ],
+  },
+  {
+    title: 'Cable Fault Detection System',
+    stack: 'Embedded Systems · Signal Processing · Sensors',
+    points: [
+      'Built a diagnostic system that detects and pinpoints fault locations in electrical and signal cabling to reduce downtime.',
+      'Integrated embedded sensor interfaces with signal-processing logic for precise fault detection and reporting.',
+    ],
+  },
+  {
+    title: 'Car Safety Interlock System',
+    stack: 'Microcontrollers · Embedded C · Safety Logic',
+    points: [
+      'Developed an embedded interlock that blocks vehicle startup until safety checks — like the seatbelt — are confirmed.',
+      'Configured hardware interrupts and firmware logic in Embedded C for real-time safety-condition verification.',
+    ],
+  },
+];
+---
+
+<section id="projects" class="section alt-section">
+  <div class="container">
+    <p class="eyebrow"><span class="led-dot"></span>Projects</p>
+    <h2>Engineering projects</h2>
+
+    <div class="projects-grid">
+      {projects.map((project) => (
+        <article class="card project-card">
+          <h3>{project.title}</h3>
+          <p class="project-stack">{project.stack}</p>
+          <ul>
+            {project.points.map((point) => (
+              <li>{point}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Alternating section background so it reads as a distinct band on
+     scroll, using the secondary background color from the palette. */
+  .alt-section {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--divider-color);
+    border-bottom: 1px solid var(--divider-color);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .project-card {
+    /* Cards sit on the secondary background already, so give them the
+       primary background to keep contrast against the section behind them */
+    background: var(--bg-primary);
+  }
+
+  .project-stack {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--teal);
+    margin-bottom: var(--space-sm);
+  }
+
+  .project-card ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--text-color);
+    font-size: 0.92rem;
+  }
+
+  .project-card li + li {
+    margin-top: 0.5rem;
+  }
+</style>
